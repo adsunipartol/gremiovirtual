@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+	<body>
+		<h4>Seja bem-vindo(a) ao Grêmio Virtual, <%= @usuario.nome.titleize %>!</h4>
+		<p>
+			O Grêmio Virtual, tem como objetivo motivar os alunos à participarem do Grêmio Estudantil de sua escola.
+			É onde você, aluno, aprenderá na prática a como se tornar um cidadão mais ativo dentro da sociedade em que vive.
+		</p>
+		<p>
+			Aqui, você terá acesso às funcionalidades e atividades (se você tiver permissão) relacionadas ao Grêmio Estudantil.
+			Poderão ser realizadas atividades como a eleição ou reeleição do grêmio estudantil, criação de chapas, comissões, conselhos, representantes de turma...
+			Tudo isso é para que os alunos possam obter o melhor para o bem de todos e da escola, unindo-os como um todo!
+		</p>
+		<p>
+			Seu login é: <%= @usuario.email %>, e sua senha é: <%= @usuario.password %>. Recomendamos que altere-a quando acessar o sistema.
+		</p>
+		
+		<p>
+			<a href="<%= root_url %>" target="_blank"> <strong>Grêmio Virtual</strong> </a>
+		</p>
+	</body>
+
+</html>

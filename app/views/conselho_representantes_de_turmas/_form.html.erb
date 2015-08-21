@@ -1,0 +1,21 @@
+<%= form_for(@conselho_representantes_de_turma) do |f| %>
+  <% if @conselho_representantes_de_turma.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conselho_representantes_de_turma.errors.count, "error") %> prohibited this conselho_representantes_de_turma from being saved:</h2>
+
+      <ul>
+      <% @conselho_representantes_de_turma.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gremio_id, 'Grêmio' %><br>
+    <%= f.select :gremio_id, Gremio.all.collect { |g| [g.nome, g.id]}, {include_blank: 'Selecione o grêmio estudantil'}, :class => 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

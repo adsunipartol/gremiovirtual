@@ -1,0 +1,57 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2 class="text-center"> 
+			<strong> Votação (Grêmio) </strong>
+		</h2>
+		
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>
+						<label> Grêmio </label> <br>
+						<%= @eleicao_gremio.gremio.nome %>
+					</td>
+					
+					<td>
+						<label> Data de Votação </label> <br>
+						<%= @eleicao_gremio.data_votacao.strftime('%d/%m/%Y') if @eleicao_gremio.data_votacao? %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<% if @eleicao_gremio.chapas.count > 0 %>
+			<br>
+			<br>
+			
+			<table class="table table-condensed">
+				<tbody>
+					<% @eleicao_gremio.chapas.each do |c| %>
+						<tr>
+							<td> <%= c.nome.titleize %> </td>
+							<td>
+								
+									<%= form_for c, url: votar_chapas_path do |f| %>
+										<%= f.hidden_field :chapa_id, value: c.id %>
+										<%= f.hidden_field :eleicao_gremio_id, value: @eleicao_gremio.id %>
+										<%= f.submit 'Votar', class: 'btn btn-xs btn-info pull-right' %>
+									<% end %>
+								
+							</td>
+						</tr>
+						<% c.membros.each do |m| %>
+							<tr>
+								<td>
+									<label><%= m.cargo.descricao %></label>
+								</td>
+								<td>
+									<%= m.aluno.nome %> 
+								</td>
+							</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>

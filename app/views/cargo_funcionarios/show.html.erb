@@ -1,0 +1,16 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2 class="text-center">
+			<strong>Cargo (Funcionário)</strong>
+		</h2>
+		
+		<div class="form-group">
+			<label> Descrição </label> <br>
+			<span class="form-control"> <%= @cargo_funcionario.descricao %> </span>
+		</div>	
+				
+		<div>
+			<%= link_to icon('edit', 'Editar Cargo'), edit_cargo_funcionario_path(@cargo_funcionario), :class => 'btn btn-default' %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<h1>Listing membro_comissao_eleitorais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comissao eleitoral</th>
+      <th>Aluno</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @membros.each do |membro| %>
+      <tr>
+        <td><%= membro.comissao_eleitoral %></td>
+        <td><%= membro.aluno %></td>
+        <td><%= link_to 'Exibir', membro %></td>
+        <td><%= link_to 'Editar', edit_membro_comissao_eleitoral_path(membro) %></td>
+        <td><%= link_to 'Excluir', membro, method: :delete, data: { confirm: 'Excluir membro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

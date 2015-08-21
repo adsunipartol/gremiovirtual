@@ -1,0 +1,81 @@
+<%= form_for(@chapa) do |f| %>
+	<% if @chapa.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@chapa.errors.count, "erro") %> </h2>
+	
+			<ul>
+				<% @chapa.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<div class="form-group">
+		<%= f.label :nome %>
+		<%= f.text_field :nome, :class => 'form-control' %>
+	</div>
+	
+	<div class="actions form-group">
+		<% if policy(@chapa).create? %>
+			<%= f.submit :class => 'btn btn-sm btn-primary' %>
+		<% end %>
+		<% if policy(@chapa).finalizar_cadastro? %>
+			<%= link_to finalizar_cadastro_chapas_path(@chapa), class: 'btn btn-sm btn-default pull-right' do %>
+				<i class="fa fa-check"></i> Finalizar Cadastro
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+
+<br>
+<br>
+
+<table class="table table-condensed table-hover">
+	<tbody>
+		<% if @membros && @membros.count > 0 %>
+			<% @membros.each do |membro| %>
+				<tr>
+					<td>
+						<label> <%= "#{membro.cargo.descricao}:" %> </label>
+						<%= link_to membro.aluno.nome.titleize, membro.aluno %>
+					</td>
+					<td>
+						<label> Turma: </label>
+						<%= link_to membro.aluno.turma.nome, membro.aluno.turma %>
+						
+        				<%= link_to 'Remover', membro, method: :delete, class: 'btn btn-xs btn-danger pull-right', data: {confirm: 'Remover membro?'} %>
+    				</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+<br>
+
+<% if @cargos && @cargos.count > 0 %>
+	<table class="table table-hover table-condensed">
+		<tbody>
+			<% @cargos.each do |cargo| %>
+				<tr>
+					<td>
+						<label> <%= "#{cargo.descricao}" %> </label>
+						<br>
+						<%= form_for MembroChapa.new, url: chapa_membros_path(@chapa) do |f| %>
+							<%= f.hidden_field :chapa_id, value: @chapa.id %>
+							<%= f.hidden_field :cargo_membro_chapa_id, value: cargo.id %>
+							
+							<%= f.select :aluno_id, @alunos.collect{ |a| ["#{a.nome.titleize} // #{a.turma.nome}", a.id]}, {include_blank: 'Selecione um aluno...'}, style: 'min-width: 500px', required: true %>
+							
+							<%= f.submit 'Adicionar', class: 'btn btn-xs btn-info pull-right' %>
+						<% end %>
+    				</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

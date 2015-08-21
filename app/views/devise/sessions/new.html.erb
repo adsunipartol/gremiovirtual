@@ -1,0 +1,40 @@
+<div class="box-info modal-content" style="max-width: 400px; margin: 0 auto;">
+	<h2 class="text-center" style="font-size: 1.4em"> 
+		<strong> Grêmio Virtual </strong> <br>
+		<small> Colégio Estadual Ayrton Senna da Silva</small>
+	</h2>
+	
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		<div class="form-group input-group col-xs-12">
+			<span class="input-group-addon" style="width: 1.2cm">
+				<i class="fa fa-lg fa-users"></i>
+			</span>
+			<%= f.select :colegio_id, Colegio.all.collect {|c| [c.nome, c.id]}, {include_blank: 'Selecione o Colégio'}, :class => 'form-control', :autofocus => true, :required => true %>
+		</div>
+	
+		<div class="form-group input-group col-xs-12">
+			<span class="input-group-addon" style="width: 1.2cm">
+				<i class="fa fa-lg fa-envelope-o"></i>
+			</span>
+			
+			<%= f.email_field :email, :class => 'form-control', :required => true %>
+		</div>
+		
+		<div class="form-group input-group col-xs-12">
+			<span class="input-group-addon" style="width: 1.2cm">
+				<i class="fa fa-lg fa-unlock-alt"></i>
+			</span>
+			<%= f.password_field :password, autocomplete: "off", :class => 'form-control', :required => true %>
+		</div>
+		
+		<%= devise_error_messages! %>
+			
+		<div>
+			<%= f.submit "Entrar", :class => 'btn btn-primary col-xs-12' %>
+		</div>
+	<% end %>
+	<br><br>
+	
+	<%= render "devise/shared/links" %>
+	
+</div>

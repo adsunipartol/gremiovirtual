@@ -1,0 +1,45 @@
+<div class="bol-xs-12 box-info">
+	<div class="panel-heading">
+		
+		<h2 class="text-center">
+			<strong> Exibindo Chapa </strong>
+		</h2>
+		
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<td>
+						<label> Nome: </label> <br>
+						<%= @chapa.nome.titleize %>
+					</td>
+					<td>
+						<% if policy(@chapa).edit? %>
+					 		<%= link_to icon('edit','Editar'), edit_chapa_path(@chapa), class: 'btn btn-sm btn-primary pull-right' %>
+						<% end %>
+					</td>
+				</tr>
+				<tr><td colspan="2"></td></tr>
+			</thead>
+		</table>
+		
+		<br>
+		<br>
+		<h2>Membros</h2>
+		<table class="table table-striped table-condensed" data-sortable>
+			<thead>
+				<% if @membros.count > 0 %>
+					<% @membros.each do |membro| %>
+						<tr>
+							<td>
+								<label> <%= "#{membro.cargo.descricao}:" %> </label> <%= link_to membro.aluno.nome.titleize, membro.aluno %>
+							<br>
+								<label> Turma </label> <%= link_to membro.aluno.turma.nome, membro.aluno.turma %>
+	        				</td>
+						</tr>
+					<% end %>
+				<% end %>
+			</thead>
+		</table>
+		
+	</div>
+</div>

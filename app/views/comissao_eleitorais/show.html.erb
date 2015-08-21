@@ -1,0 +1,61 @@
+<div class="bol-xs-12 box-info">
+	<div class="panel-heading">
+		
+		<h2 class="text-center">
+			<strong> Comissão Eleitoral </strong>
+		</h2>
+		
+		<table class="table">
+			<thead>				
+				<tr>
+					<td colspan="3">
+						<div class="form-group">
+							<% if policy(@comissao_eleitoral).finalizar? %>
+								<%= link_to icon('check', 'Finalizar Comissão Eleitoral'), finalizar_cadastro_comissao_eleitorais_path(@comissao_eleitoral), :class => 'btn btn-primary'  %>
+							<% end %>
+						</div>
+						
+						<br/>
+						
+						<h2>
+							Membros
+							<% if policy(@comissao_eleitoral).adicionar_membro? %>
+								<a class="md-trigger btn btn-xs btn-default pull-right" data-modal="consulta-alunos-modal"> <i class="fa fa-plus"></i> Adicionar Membro </a>
+							<% end %>
+						</h2>
+						<% if @comissao_eleitoral.membros.exists? %>
+							<table class="table table-condensed table-hover" data-sortable>
+								<thead class="my-table-header">
+									<tr>
+										<th style="width: 150px"> Matrícula </th>
+										<th> Aluno </th>
+										<th> Turma </th>
+										<th> </th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @comissao_eleitoral.membros.each do |membro| %>
+										<tr>
+											<td> <%= link_to membro.aluno.matricula, membro.aluno %> </td>
+											<td> <%= membro.aluno.nome.titleize %> </a> </td>
+											<td> <%= link_to membro.aluno.turma.nome, membro.aluno.turma %> </td>
+											<td>	
+												<% if policy(membro).destroy? %>
+								        			<%= link_to 'Remover', membro, method: :delete, data: { confirm: 'Excluir membro?' }, class: 'btn btn-xs btn-danger pull-right' %>
+									        	<% end %>
+											</td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						<% else %>
+							<h5> Não há membros cadastrados! </h5>
+						<% end %>	
+					</td>
+				</tr>
+			</thead>
+		</table>	
+	</div>
+</div>
+
+<%= render 'modal_consulta_alunos' %>

@@ -1,0 +1,33 @@
+<div class="box-info full" >
+	<div class="panel">
+		<div class="panel-heading">
+			<h2><strong> Publicação </strong></h2>
+		</div>
+		
+		<div class="panel-body">
+			<p id="notice"><%= notice %></p>
+
+			<p>
+			  <strong>Aluno: </strong> <%= @publicacao.aluno %>
+			</p>
+			
+			<p>
+			  <strong>Data: </strong> <%= @publicacao.data %>
+			</p>
+			
+			<p>
+			  <strong>Hora: </strong> <%= @publicacao.hora %>
+			</p>
+			
+			<p>
+			  <strong>Título: </strong> <%= @publicacao.titulo %>
+			</p>
+			
+			<p>
+			  <strong>Conteúdo: </strong> <%= @publicacao.conteudo %>
+			</p>
+			
+			<%= link_to 'Editar', edit_publicacao_path(@publicacao) %> |
+		</div>
+	</div>
+</div>

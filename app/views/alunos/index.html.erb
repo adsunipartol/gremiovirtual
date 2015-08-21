@@ -1,0 +1,31 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Alunos </h2>
+	
+		<% if @alunos.exists? %>
+			<table class="table table-responsive table-condensed" data-sortable>
+				<thead class="my-table-header">
+					<tr>
+						<th style="min-width: 3cm"> Matrícula </th>
+						<th style="min-width: 4.5cm"> Nome </th>
+						<th style="min-width: 4.5cm"> Turma </th>
+						<th> Status </th>
+					</tr>
+				</thead>
+		
+				<tbody>
+					<% @alunos.each do |aluno| %>
+						<tr>
+							<td> <%= link_to aluno.matricula, aluno %></td>
+							<td> <%= aluno.nome %> </td>
+							<td> <%= link_to aluno.turma.nome, aluno.turma %> </td>
+							<td> <%= aluno.status %> </td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h5> Nenhum aluno cadastrado </h5>
+		<% end %>				
+	</div>
+</div>

@@ -1,0 +1,110 @@
+<div class="bol-xs-12 box-info">
+	<div class="panel-heading">
+		
+		<h2 class="text-center"> <strong> Conselho Fiscal </strong></h2>
+		
+		<table class="table">
+			<thead>				
+				<tr>
+					<td>
+						<div class="form-group">
+							<% if policy(@conselho_fiscal).finalizar? %>
+								<%= link_to icon('check', 'Finalizar Conselho Fiscal'), finalizar_cadastro_conselho_fiscais_path(@conselho_fiscal), :class => 'btn btn-primary'  %>
+							<% end %>
+						</div>
+						
+						<br>
+						<br>
+						
+						<h2>
+							Membros (Efetivos)
+							<% if policy(@conselho_fiscal).adicionar_membro_efetivo? %>
+								<a class="md-trigger btn btn-xs btn-info pull-right" data-modal="consulta-alunos-modal"> <i class="fa fa-plus"></i> Adicionar Membro </a>
+							<% end %>
+						</h2>
+						<% if @conselho_fiscal.membros.exists? %>
+							<table class="table table-responsive">
+								<thead class="my-table-header">
+									<tr>
+										<th style="width: 3cm"> Matrícula </th>
+										<th> Aluno </th>
+										<th> </th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @conselho_fiscal.membros.each do |membro| %>
+										<tr>
+											<td> <%= membro.aluno.matricula %> </td>
+											<td> <a href="<%= membro.aluno %>"> <%= membro.aluno.nome %> </a></td>
+											
+											<td class="text-right">
+												<div class="btn-group btn-group-sm pull-right">
+													<% if policy(membro).destroy? %>
+									        			| <%= link_to 'Remover', membro, method: :delete, data: { confirm: 'Excluir membro?' } %>
+										        	<% end %>
+												</div>
+											</td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						<% else %>
+							<h5> Não há membros cadastrados! </h5>
+						<% end %>	
+					</td>
+				</tr>
+			</thead>
+		</table>
+		
+		<br>
+		<br>
+		
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<td>
+						<h2>
+							Membros (Suplentes)
+							<% if policy(@conselho_fiscal).adicionar_membro_suplente? %>
+								<a class="md-trigger btn btn-xs btn-info pull-right" data-modal="consulta-alunos-modal"> <i class="fa fa-plus"></i> Adicionar Membro </a>
+							<% end %>
+						</h2>
+						<% if @conselho_fiscal.membros.exists? %>
+							<table class="table table-responsive">
+								<thead class="my-table-header">
+									<tr>
+										<th style="width: 3cm"> Matrícula </th>
+										<th> Aluno </th>
+										<th> </th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @conselho_fiscal.membros.each do |membro| %>
+										<tr>
+											<td> <%= membro.aluno.matricula %> </td>
+											<td> <a href="<%= membro.aluno %>"> <%= membro.aluno.nome %> </a></td>
+											
+											<td class="text-right">
+												<div class="btn-group btn-group-sm pull-right">
+													<% if policy(membro).destroy? %>
+									        			| <%= link_to 'Remover', membro, method: :delete, data: { confirm: 'Excluir membro?' } %>
+										        	<% end %>
+												</div>
+											</td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						<% else %>
+							<h5> Não há membros cadastrados! </h5>
+						<% end %>	
+					</td>
+				</tr>
+			</thead>
+		</table>	
+	</div>
+</div>
+
+<%= render 'modal_consulta_alunos_membro_efetivo' %>

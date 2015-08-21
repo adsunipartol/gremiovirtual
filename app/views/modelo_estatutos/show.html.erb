@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comissao pro gremio:</strong>
+  <%= @modelo_estatuto.comissao_pro_gremio %>
+</p>
+
+<p>
+  <strong>Aprovado:</strong>
+  <%= @modelo_estatuto.aprovado %>
+</p>
+
+<p>
+  <strong>Estatuto:</strong>
+  <%= @modelo_estatuto.estatuto %>
+</p>
+
+<%= link_to 'Edit', edit_modelo_estatuto_path(@modelo_estatuto) %> |
+<%= link_to 'Back', modelo_estatutos_path %>

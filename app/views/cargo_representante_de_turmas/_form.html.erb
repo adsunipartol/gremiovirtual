@@ -1,0 +1,21 @@
+<%= form_for(@cargo_representante_de_turma) do |f| %>
+  <% if @cargo_representante_de_turma.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cargo_representante_de_turma.errors.count, "error") %> prohibited this cargo_representante_de_turma from being saved:</h2>
+
+      <ul>
+      <% @cargo_representante_de_turma.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descricao, 'Descrição' %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

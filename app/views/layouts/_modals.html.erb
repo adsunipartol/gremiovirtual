@@ -1,0 +1,47 @@
+<!-- Modal Dialog -->
+<!-- Modal Logout Primary -->
+<div class="md-modal md-fall" id="logout-modal">
+	<div class="md-content box-info">
+		<h2> Confirmando saída... </h2>
+		<div>
+			<p class="text-center">
+				<button class="btn btn-danger md-close"> Não! </button>
+				<%= link_to 'Sim, sair...', destroy_usuario_session_path, :method => :delete, :class => 'btn btn-primary', :style => 'color: white' %>
+			</p>
+		</div>
+	</div>
+</div>
+<!-- Modal Logout Alternatif -->
+<div class="md-modal md-just-me" id="logout-modal-alt">
+	<div class="md-content">
+		<h3><strong>Logout</strong> Confirmação</h3>
+		<div>
+			<p class="text-center">
+				Tem certeza que deseja sair do sistema?
+			</p>
+			<p class="text-center">
+				<button class="btn btn-danger md-close">
+					Não!
+				</button>
+				<a href="login.html" class="btn btn-success md-close">Sim, sair</a>
+			</p>
+		</div>
+	</div>
+</div>
+<!-- Modal Task Progress -->
+<div class="md-modal md-slide-stick-top" id="task-progress">
+	<div class="md-content">
+		<h3><strong>Progresso de tarefas</strong> Informações</h3>
+		<div>
+			<p>
+				CLEANING BUGS
+			</p>
+			
+			<p class="text-center">
+				<button class="btn btn-danger btn-sm md-close">
+					Close
+				</button>
+			</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  colegio_id: 
+  ativa: false
+
+two:
+  colegio_id: 
+  ativa: false

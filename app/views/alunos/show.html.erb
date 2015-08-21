@@ -1,0 +1,52 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2 class="text-center">
+			<strong>Aluno</strong>
+		</h2>
+		
+		<div class="form-group">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<td style="width: 150px">
+							<label> Turma </label> <br>
+							<%= link_to @aluno.turma.nome, @aluno.turma %>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> Matrícula </label> <br>
+							<%= @aluno.matricula %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> Nome </label> <br>
+							<%= @aluno.nome.titleize %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> Data de Nascimento </label> <br>
+							<%= @aluno.dtnascimento.strftime("%d/%m/%Y") %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> E-mail </label> <br>
+							<%= @aluno.email %>
+						</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="form-group">
+			<% if policy(:aluno).update? %>
+				<%= link_to icon('edit', 'Editar'), edit_aluno_path(@aluno), :class => 'btn btn-primary' %> </td>
+			<% end %>
+			<% if policy(:aluno).destroy? %>
+				<%= link_to 'Excluir', @aluno, method: :delete, data: {confirm: 'Remover aluno?'}, class: 'btn btn-danger' %> </td>
+			<% end %>
+		</div>
+	</div>
+</div>

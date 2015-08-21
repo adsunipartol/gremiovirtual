@@ -1,0 +1,2 @@
+module RepresentanteDeTurmasHelper
+end

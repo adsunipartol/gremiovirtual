@@ -1,0 +1,27 @@
+<h1>Listing cargo_membro_conselho_fiscais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cargo_membro_conselho_fiscais.each do |cargo_membro_conselho_fiscal| %>
+      <tr>
+        <td><%= cargo_membro_conselho_fiscal.descricao %></td>
+        <td><%= link_to 'Show', cargo_membro_conselho_fiscal %></td>
+        <td><%= link_to 'Edit', edit_cargo_membro_conselho_fiscal_path(cargo_membro_conselho_fiscal) %></td>
+        <td><%= link_to 'Destroy', cargo_membro_conselho_fiscal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cargo membro conselho fiscal', new_cargo_membro_conselho_fiscal_path %>

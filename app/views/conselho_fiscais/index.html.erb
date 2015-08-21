@@ -1,0 +1,27 @@
+<h1>Listing conselho_fiscais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gremio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conselho_fiscais.each do |conselho_fiscal| %>
+      <tr>
+        <td><%= conselho_fiscal.gremio %></td>
+        <td><%= link_to 'Show', conselho_fiscal %></td>
+        <td><%= link_to 'Edit', edit_conselho_fiscal_path(conselho_fiscal) %></td>
+        <td><%= link_to 'Destroy', conselho_fiscal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Conselho fiscal', new_conselho_fiscal_path %>

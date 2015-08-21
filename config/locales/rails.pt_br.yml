@@ -1,0 +1,278 @@
+pt_br:
+  permissions:
+    access_denied: "Sem permissão de acesso"
+
+  # formatos de data e hora
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+      report: "Aos %d do mês de %B do ano de %Y"
+      month_year: "%B %Y"
+
+    day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      clean: "%A, %d de %B de %Y, %H:%M h"
+      default: "%d/%m/%Y - %H:%M"
+      short: "%d/%m, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+      hour: "%H:%M"
+    am: ""
+    pm: ""
+
+  # distancia do tempo em palavras
+  datetime:
+    distance_in_words:
+      half_a_minute: "meio minuto"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+
+      less_than_x_minutes:
+        one: "menos de um minuto"
+        other: "menos de %{count} minutos"
+
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+
+      about_x_hours:
+        one: "aproximadamente 1 hora"
+        other: "aproximadamente %{count} horas"
+
+      x_days:
+        one: "1 dia"
+        other: "%{count} dias"
+
+      about_x_months:
+        one: "aproximadamente 1 mês"
+        other: "aproximadamente %{count} meses"
+
+      x_months:
+        one: "1 mês"
+        other: "%{count} meses"
+
+      about_x_years:
+        one: "aproximadamente 1 ano"
+        other: "aproximadamente %{count} anos"
+
+      over_x_years:
+        one: "mais de 1 ano"
+        other: "mais de %{count} anos"
+
+      almost_x_years:
+        one: "quase 1 ano"
+        other: "quase %{count} anos"
+
+    prompts:
+      year:   "Ano"
+      month:  "Mês"
+      day:    "Dia"
+      hour:   "Hora"
+      minute: "Minuto"
+      second: "Segundo"
+
+  number:
+    format:
+      precision: 2
+      separator: ","
+      delimiter: "."
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        unit: "R$"
+        precision: 2
+        format: "%u %n"
+        separator: "."
+        delimiter: ","
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: "."
+
+    precision:
+      format:
+        delimiter: "."
+
+    human:
+      format:
+        precision: 2
+        delimiter: "."
+        significant: true
+        strip_insignificant_zeros: true
+
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      # number_to_human()
+      # new in rails 3: please add to other locales
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "mil"
+          million:
+            one: milhão
+            other: milhões
+          billion:
+            one: bilhão
+            other: bilhões
+          trillion:
+            one: trilhão
+            other: trilhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+
+  # Usado no Array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " e "
+      last_word_connector: " e "
+
+    select:
+      prompt: "Por favor selecione"
+
+  helpers:
+    select:
+      prompt: "Por favor selecione"
+
+    submit:
+      create: "Salvar"
+      update: "Salvar"
+      submit: "Salvar"
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    template:
+      header:
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros."
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+
+    messages: &errors_messages
+      inclusion: "não está incluído na lista"
+      exclusion: "não está disponível"
+      invalid: "não é válido"
+      confirmation: "não está de acordo com a confirmação"
+      accepted: "deve ser aceito"
+      empty: "não pode ficar vazio"
+      blank: "não pode ficar em branco"
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length: "não possui o tamanho esperado (%{count} caracteres)"
+      not_a_number: "não é um número"
+      not_an_integer: "não é um número inteiro"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      equal_to: "deve ser igual a %{count}"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      less_than_or_equal_to_predicted_value: "deve ser menor ou igual ao valor previsto (R$ %{count})"
+      odd: "deve ser ímpar"
+      even: "deve ser par"
+      presence_at_least_one: "um dos campos precisa ser preenchido" # for presence_at_least_one validator
+      not_saved: "Não foi possível salvar"
+      must_be_professional: "Deve ser uma empresa do ramo"
+      should_be_on_or_after: "Não pode ser anterior a data inicial"
+      unavailable_time: "Não há espaço suficiente nesse horário para o serviço que escolheu"
+      exceded_number_of_professionals: "Você possui mais profissionais do que o seu plano suporta, mude de plano ou exclua profissionais."
+      limit_of_professionals: "Seu plano atual não suporta mais profissionais, atualize seu plano."
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "Não foi possível gravar %{model}: 1 erro"
+          other: "Não foi possível gravar %{model}: %{count} erros"
+        body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+
+      messages:
+        taken: "já está em uso"
+        record_invalid: "A validação falhou: %{errors}"
+        cant_be_destroyed: "Este registro não pôde ser apagado pois há outros cadastros que dependem dele"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute}%{message}"
+
+  alts:
+    new_record: "Novo registro"
+    filter: "Filtrar"
+    logout: "Sair"
+    cancel: "Cancelar"
+    search: "Procurar"
+    print: "Imprimir"
+    delete: "Remover"
+    edit_account: "Editar Conta"
+    sign_up: "Cadastrar"
+    sign_in: "Login"
+    change_your_password: "Altere sua senha"
+    new_password: "Nova senha"
+    confirm_new_password: "Confirmação da senha"
+    change_my_password: "Alterar minha senha"
+    resend_confirmation_instructions: "Reenviar instruções de confirmação"
+    resend_unlock_instructions: "Reenviar instruções de desbloqueio"
+    forgot_your_password: "Receber senha por e-mail"
+    send_me_reset: "Enviar instruções para rafazer a senha"
+    edit: "Alterar"
+    update: "Atualizar"
+    back: "<< Voltar"
+    currently_waiting_confirmation: "Atualmente aguardando confirmação de:"
+    password: "Senha"
+    leave_blank: "Deixe em branco se você não quer alterá-la"
+    current_password: "Senha atual"
+    cancel_my_account: "Cancelar minha conta"
+    unhappy: "Insatisfeito?"
+    are_you_sure: "Você tem certeza?"
+    rememberme: " Lembre-me"
+    didnt_receive_instructions: "Não recebeu instruções de confirmação?"
+    didnt_unlock_instructions: "Não recebeu instruções de desbloqueio?"
+    sign_in_with: "Fazer login com"
+    add_image: "Adicionar imagem"
+    add_item: "Adicionar Item"
+    unavailable: "Indisponível"
+    schedule: "Agendar"
+    block_hour: "Bloquear horário"
+    confirm: "Confirmar"
+    expired_time: "Seu prazo de utilização expirou, efetue o pagamento para continuar"
+    will_expires: "Seu plano irá vencer em 3 dias, efetue o pagamento para continuar"
+
+  mailer:
+    welcome: "Bem-vindo"
+    you_can_confirm_email: "Você pode confirmar sua conta de e-mail pelo link abaixo"
+    confirm_my_account: "Confirme minha conta"
+    hello: "Olá"
+    requested_change_password: "Você solicitou recentemente a redefinição de sua senha do Inova Prati. Para concluir a solicitação, clique neste link:"
+    if_you_didnt_request: "Se você não solicitou o link para alteração por gentileza desconsiderar o e-mail."
+    your_password_wont_change: "Para sua segurança, sua senha não será alterada até você acessar o link acima e criar uma nova senha."
+    your_account_has_been_locked: "Sua conta foi bloqueada devido a um número excessivo de tentativas de acesso com senha inválida."
+    link_to_unlock: "Clique no link abaixo para desbloquear sua conta:"
+    unlock_my_account: "Desbloquear minha conta"

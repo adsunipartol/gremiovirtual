@@ -1,0 +1,2 @@
+module CargoMembroComissaoEleitoraisHelper
+end

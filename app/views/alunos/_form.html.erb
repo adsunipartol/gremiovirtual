@@ -1,0 +1,74 @@
+<div class="col-xs-12">
+	<% if @aluno.errors.any? %>
+		<div id="error_explanation">
+	  		<h2><%= pluralize(@aluno.errors.count, "erro") %> </h2>
+		  	<ul>
+			  	<% @aluno.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+	  			<% end %>
+	  		</ul>
+		</div>
+	<% end %>
+
+	<%= form_for(@aluno) do |f| %>		
+		
+		<div class="col-xs-12">
+			<div class="field form-group">
+				<%= f.label :colegio, "Colégio" %>
+				<%= f.text_field :colegio, :class=>"form-control", :readonly => true, :value => @aluno.colegio.nome %>
+			</div>
+			
+			<div class="field form-group">
+				<%= f.label :cidade_id, "Cidade" %>
+				<%= f.select :cidade_id, Cidade.all.collect {|c| [c.nome_completo, c.id] }, {include_blank: 'Selecione uma cidade'}, :class => "form-control", :required => true, :autofocus => true %>
+			</div>
+			
+			<div class="field form-group">
+				<%= f.label :turma_id, "Turma" %>
+				<%= f.select :turma_id, @turmas.collect {|t| [t.nome, t.id] }, {include_blank: 'Selecione uma turma', selected: @turmas.first.id}, :class => "form-control", :required => true, :autofocus => true %>
+			</div>
+			
+			<div class="field form-group">
+				<%= f.label :matricula, "Matrícula" %>
+				<%= f.text_field :matricula, :class=>"form-control", :required => true, :pattern => '[0-9]+', :id => 'matricula', :maxlength => 10, :style => 'width: 150px' %>
+			</div>
+	
+			<div class="field form-group">
+				<%= f.label :nome %>
+				<%= f.text_field :nome,:class=> "form-control input-sm", :required => true, :id => 'nome', :maxlength => 150 %>
+			</div>
+			
+			<div class="field form-group">
+				<%= f.label :email, "E-mail" %>
+				<%= f.email_field :email, :class=> "form-control input-sm", :required => true, :id => 'email' %>
+			</div>
+			
+			<div class="field form-group">
+				<%= f.label :dtnascimento, "Data Nascimento" %> <br>
+				<%= f.date_select :dtnascimento, {start_year: 1980, end_year: Time.now.year - 3}, :required => true, :id => 'dtnascimento', :style => 'height: 25px' %>
+			</div>
+			
+			<div class="form-group">
+				<label class="checkbox">
+					<%= f.check_box :ativo, checked: true %>
+				 	Ativo?
+				</label>
+			</div>
+			
+		</div>	
+		
+		<div class="col-xs-12">
+			<%= f.submit :class=> "btn btn-primary btn-sm", :style => 'width: 4.7cm' %>
+		</div>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		/* Mascara os campos com MaskedInput... */
+		$('#cpf').mask('999.999.999-99');
+		$('.telefone').mask('(99) 9999 9999');
+		//$('#matricula').mask('99999');
+		$('#cep').mask('99999-999');
+	});
+</script>

@@ -1,0 +1,35 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2 class="text-center"> 
+			<strong> Eleição (Grêmio) </strong>
+		</h2>
+		
+		<table class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<td colspan="2">
+						<label> Grêmio </label> <br>
+						<%= @eleicao_gremio.gremio.nome %>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 300px">
+						<label> Data de Início das Inscrições </label> <br>
+						<%= @eleicao_gremio.data_inicio_inscricoes.strftime('%d/%m/%Y') %>
+					</td>
+					<td>
+						<label> Data de Término das Inscrições </label> <br>
+						<%= @eleicao_gremio.data_termino_inscricoes.strftime('%d/%m/%Y') %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label> Data de Votação </label> <br>
+						<%= @eleicao_gremio.data_votacao.strftime('%d/%m/%Y') if @eleicao_gremio.data_votacao? %>
+					</td>
+				</tr>
+			</thead>
+		</table>
+		
+	</div>
+</div>

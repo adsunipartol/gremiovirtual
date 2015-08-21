@@ -1,0 +1,46 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Representantes de Turma </h2>
+		
+		<% if @turmas.count > 0 %>
+			<% @turmas.each do |turma| %>
+				<% if turma.representantes.count > 0 %>
+					<table data-sortable class="table table-responsive">
+						<thead class="my-table-header">
+							<tr>
+								<th> Turma </th>
+								<th style="width: 6cm"> Aluno </th>
+								<th style="width: 3cm"> Cargo </th>
+								<th style="width: 6cm"></th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<% turma.representantes.each do |representante| %>
+								<tr>
+									<td> <a href="<%= url_for(representante.turma)%>"> <%= representante.turma.nome %> </a> </td>
+									<td> <a href="<%= url_for(representante.aluno) %>"> <%= representante.aluno.nome %> </a> </td>
+									<td><%= representante.cargo.descricao %></td>
+									
+									<td class="text-right">
+										<div class="btn-group btn-group-sm pull-right">
+											<% if policy(:representante_de_turma).edit? %>
+												| <%= link_to 'Editar', edit_representante_de_turma_path(representante) %>
+											<% end %>
+											<% if policy(:representante_de_turma).show? %>
+												| <%= link_to 'Exibir', representante %>
+											<% end %>	
+											<% if policy(:representante_de_turma).destroy? %>	
+												| <%= link_to 'Excluir', representante, :method => :delete, :data => {confirm: 'Excluir representante de turma?'} %>
+											<% end %>
+										</div>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<style>
+	div#consulta-alunos-modal {
+		max-width: 800px;
+		width: 90%;
+		height: 75%;
+		overflow: auto;
+	}
+</style>
+
+<div class="md-modal md-slide-in-right" id="consulta-alunos-modal">
+	<div class="box-info modal-content">
+		<h2 class="text-center"> 
+			<strong> Alunos </strong> 
+			<button class="btn btn-default btn-xs md-close pull-right"> <strong>X</strong> Fechar </button>
+		</h2>
+		<div>
+			<div class="form-group">
+				<% if @alunos.count > 0 %>
+					<table class="table table-responsive table-condensed" id="alunos">
+						<thead class="my-table-header">
+							<th> Matrícula </th>
+							<th style="width: 4cm"> Aluno </th>
+							<th> Série </th>
+							<th></th>
+						</thead>
+						<tbody>
+							<% @alunos.each do |a| %>
+								<tr>
+									<td> <%= a.matricula %> </td>
+									<td> <%= a.nome %> </td>
+									<td> <%= a.turma.nome %> </td>
+									<td class="text-left"> <a id="add-membro" href="<%= adicionar_membro_comissao_eleitorais_path(@comissao_eleitoral, a) %>"> <i class="fa fa-plus"></i> </a> </td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% else %>
+					<h5> Nenhum aluno disponível... </h5>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="md-overlay"></div>

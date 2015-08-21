@@ -1,0 +1,27 @@
+<h1>Listing cargo_representante_de_turmas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cargo_representante_de_turmas.each do |cargo_representante_de_turma| %>
+      <tr>
+        <td><%= cargo_representante_de_turma.descricao %></td>
+        <td><%= link_to 'Show', cargo_representante_de_turma %></td>
+        <td><%= link_to 'Edit', edit_cargo_representante_de_turma_path(cargo_representante_de_turma) %></td>
+        <td><%= link_to 'Destroy', cargo_representante_de_turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cargo representante de turma', new_cargo_representante_de_turma_path %>

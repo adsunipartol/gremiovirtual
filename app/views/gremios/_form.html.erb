@@ -1,0 +1,23 @@
+<%= form_for(@gremio) do |f| %>
+  <% if @gremio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gremio.errors.count, "erro") %> </h2>
+
+      <ul>
+      <% @gremio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="form-group">
+		<%= f.label :nome %> <br/>
+		<%= f.text_field :nome, :class => 'form-control', :autofocus => true, :required => true %> 
+	</div>
+	
+	<div class="form-group">
+		<%= f.submit :class => 'btn btn-primary' %>
+	</div>
+	
+<% end %>

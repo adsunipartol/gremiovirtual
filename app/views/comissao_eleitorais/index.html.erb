@@ -1,0 +1,25 @@
+<div class="box-info">
+	<h2> Comissões Eleitorais </h2>
+
+	<table class="table table-responsive">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @comissoes_eleitorais.each do |comissao_eleitoral| %>
+			<tr>
+				<td> <%= comissao_eleitoral.gremio %> </td>
+				<td>
+					<%= link_to 'Exibir', comissao_eleitoral %>
+					<%= link_to 'Editar', edit_comissao_eleitoral_path(comissao_eleitoral) %>
+					<%= link_to 'Remover', comissao_eleitoral, method: :delete, data: { confirm: 'Remover comissão eleitoral?' } %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

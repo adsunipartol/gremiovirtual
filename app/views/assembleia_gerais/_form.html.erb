@@ -1,0 +1,38 @@
+<%= form_for(@assembleia_geral) do |f| %>
+  <% if @assembleia_geral.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assembleia_geral.errors.count, "erro") %> </h2>
+
+      <ul>
+      <% @assembleia_geral.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	
+	<div class="field form-group">
+		<%= f.label :data_reuniao, "Data da reunião" %>
+		<%= f.text_field :data_reuniao, :class=> "form-control", :required => true, :id => 'dtreuniao', :style => 'width: 4.3cm', :maxlength => 10 %>
+	</div>
+  	
+  	<div class="field form-group">
+	 	<label> O que será discutido? </label>
+		<textarea class="form-control" rows="12">
+			
+		</textarea> 
+  	</div>
+  	
+  	<div class="actions">
+    	<%= f.submit 'Agendar Assembléia', :class => 'btn btn-primary' %>
+  	</div>
+<% end %>
+
+
+<script>
+	$(function() {
+		$('#dtreuniao').mask('99/99/9999');
+		$('#dtreuniao').datepicker({format: 'dd/mm/yyyy'});
+	});
+</script>

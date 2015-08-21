@@ -1,0 +1,27 @@
+<%= form_for(@comissao_pro_gremio) do |f| %>
+	<% if @comissao_pro_gremio.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@comissao_pro_gremio.errors.count, "erro") %> </h2>
+		
+			<ul>
+				<% @comissao_pro_gremio.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<% if policy(:comissao_pro_gremio).new? %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="2">
+						<%= f.submit :class => 'btn btn-primary' %>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	<% end %>
+<% end %>

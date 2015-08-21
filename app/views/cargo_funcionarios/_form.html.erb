@@ -1,0 +1,22 @@
+<%= form_for(@cargo_funcionario) do |f| %>
+  <% if @cargo_funcionario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cargo_funcionario.errors.count, "erro") %> </h2>
+
+      <ul>
+      <% @cargo_funcionario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :descricao, 'Descrição' %><br>
+    <%= f.text_field :descricao, class: 'form-control', required: true, autofocus: true %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

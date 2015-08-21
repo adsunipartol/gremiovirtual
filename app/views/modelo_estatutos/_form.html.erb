@@ -1,0 +1,30 @@
+<%= form_for(@modelo_estatuto) do |f| %>
+  <% if @modelo_estatuto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@modelo_estatuto.errors.count, "error") %> prohibited this modelo_estatuto from being saved:</h2>
+
+      <ul>
+      <% @modelo_estatuto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comissao_pro_gremio_id %><br>
+    <%= f.text_field :comissao_pro_gremio_id %>
+  </div>
+  <div class="field">
+    <%= f.label :aprovado %><br>
+    <%= f.check_box :aprovado %>
+  </div>
+  <div class="field">
+    <%= f.label :estatuto %><br>
+    <%= f.text_area :estatuto %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

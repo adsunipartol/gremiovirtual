@@ -1,0 +1,34 @@
+<%= form_for(@membro_chapa) do |f| %>
+	<% if @membro_chapa.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@membro_chapa.errors.count, "error") %> prohibited this membro_chapa from being saved:</h2>
+		
+			<ul>
+				<% @membro_chapa.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="form-group">
+		<%= f.label :chapa_id %>
+		<%= f.text_field :chapa_id %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :aluno_id %>
+		<%= f.text_field :aluno_id %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :cargo_membro_chapa_id, 'Cargo' %>
+		<%= f.text_field :cargo_membro_chapa_id %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title> Grêmio Virtual </title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="description" content="">
+      <meta name="author" content="">
+      
+      <link rel="stylesheet" href="/assets/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/assets/style.css">
+      <link rel="stylesheet" href="/assets/style-responsive.css">
+      <link rel="stylesheet" href="/assets/animate.css">
+      <link rel="stylesheet" href="/assets/morris/morris.css">
+      <link rel="stylesheet" href="/assets/nifty-modal/css/component.css">
+      <link rel="stylesheet" href="/assets/sortable/sortable-theme-bootstrap.css">
+      <link rel="stylesheet" href="/assets/icheck/skins/minimal/grey.css">
+      <link rel="stylesheet" href="/assets/select/bootstrap-select.min.css">
+      <link rel="stylesheet" href="/assets/summernote/summernote.css" />
+      <link rel="stylesheet" href="/assets/magnific-popup/magnific-popup.css">
+      <link rel="stylesheet" href="/assets/pace/pace-theme-minimal.css">
+      <link rel="stylesheet" href="/assets/datepicker/css/datepicker.css"/>
+      
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      
+      <%= stylesheet_link_tag 'application', media: "all", :"data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", :"data-turbolinks-track" => true %>
+	  
+      <%= csrf_meta_tags %>
+   </head>
+   <body class="tooltips">
+      <!-- Begin page -->
+      <div class="container">
+      	
+         <%= render 'layouts/modals' %>
+         
+         <%= render 'layouts/left_sidebar_menu' %>
+         
+         <!-- Start right content -->
+         <div class="right content-page">
+            <div class="header content rows-content-header">
+               <!-- Button mobile view to collapse sidebar menu -->
+               <button class="button-menu-mobile show-sidebar">
+               		<i class="fa fa-bars"></i>
+               </button>
+               <div class="navbar navbar-default" role="navigation">
+                  <div class="container">
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    		<i class="fa fa-angle-double-down"></i>
+                        </button>
+                     </div>
+                     <div class="navbar-collapse collapse">
+                     	<div class="navbar-text">
+                     		<%= link_to :back do %>
+                     			<i class="fa fa-chevron-left"></i> Voltar
+                     		<% end %>
+                     		 | 
+                     		<%= link_to current_colegio do %>
+                     			Colégio <%= current_colegio.nome %>
+                 			<% end %>
+                     	</div>
+                     	
+                        <ul class="nav navbar-nav navbar-right top-navbar">
+                        	<!--
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="label label-danger absolute animated double shake"></span></a>
+                              <ul class="dropdown-menu dropdown-message animated half flipInX">
+                                 <li class="dropdown-header notif-header"> Notificações </li>
+                                 <li class="divider"></li>
+                                 <li class="unread">
+                                    <a href="#">
+                                       <img src="/assets/avatar/2.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+                                       <strong>John Doe</strong><br />
+                                       <p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+                                       <p><i>5 minutes ago</i></p>
+                                    </a>
+                                 </li>
+                                 <li class="unread">
+                                    <a href="#">
+                                       <img src="/assets/avatar/1.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+                                       <strong>Annisa Rusmanovski</strong><br />
+                                       <p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+                                       <p><i>2 hours ago</i></p>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="#">
+                                       <img src="/assets/avatar/3.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+                                       <strong>Ari Rusmanto</strong><br />
+                                       <p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+                                       <p><i>5 hours ago</i></p>
+                                    </a>
+                                 </li>
+                                 <li class="dropdown-footer"><a href="#"><i class="fa fa-share"></i> See all messages</a></li>
+                              </ul>
+                           </li>
+                          -->
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i> <%= "#{current_usuario.email}" if current_usuario %> <i class="fa fa-chevron-down i-xs"></i></a>
+                              <ul class="dropdown-menu animated half flipInX">
+                                 <li><a class="md-trigger" data-modal="logout-modal"> Sair </a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--/.nav-collapse -->
+                  </div>
+               </div>
+            </div>
+            
+            <!-- ============================================================== -->
+            <!-- Start Content here -->
+            <!-- ============================================================== -->
+            <div class="body content rows scroll-y">
+				<% if flash[:notice] %>
+					<p class="alert"><%= flash[:notice] %></p>
+				<% end %>
+               	
+           		<div class="container">
+               		<div class="col-xs-12">
+						<%= render 'layouts/messages' %>
+					</div>
+               		<div class="col-lg-11 scroll-x">
+               			<%= yield %>	
+               		</div>
+               </div>
+               
+               <footer>
+               		<div class="pull-right" style="padding-right: 0.5cm;">
+                  		&copy; 2014 ADS - <a href="http://www.unipar.br">UNIPAR</a>. Desenvolvido por Diego Morgenstern & Jéssica Moraes.
+              		</div>
+               </footer>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End content here -->
+            <!-- ============================================================== -->
+         </div>
+         
+         <!-- End right content -->
+         <!-- the overlay modal element -->
+         <div class="md-overlay"></div>
+         <!-- End of eoverlay modal -->
+      </div>
+      
+      <!-- End of page -->
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!-- ><script src="/assets/jquery.js"></script> -->
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      
+      <script src="/assets/jquery-maskedinput/jquery.maskedinput.js"></script>
+      <script src="/assets/bootstrap.min.js"></script>
+      <script src="/assets/knob/jquery.knob.js"></script>
+      <script src="/assets/slimscroll/jquery.slimscroll.min.js"></script>
+      <script src="/assets/raphael/2.1.0/raphael-min.js"></script>
+      <script src="/assets/morris/morris.js"></script>
+      <script src="/assets/nifty-modal/js/classie.js"></script>
+      <script src="/assets/nifty-modal/js/modalEffects.js"></script>
+      <script src="/assets/sortable/sortable.min.js"></script>
+      <script src="/assets/select/bootstrap-select.min.js"></script>
+      <script src="/assets/summernote/summernote.js"></script>
+      <script src="/assets/magnific-popup/jquery.magnific-popup.min.js"></script> 
+      <script src="/assets/pace/pace.min.js"></script>
+      <script src="/assets/input/bootstrap.file-input.js"></script>
+  	  <script src="/assets/datepicker/js/bootstrap-datepicker.js"></script>
+      <script src="/assets/icheck/icheck.min.js"></script>
+      <script src="/assets/wizard/jquery.snippet.min.js"></script>
+      <script src="/assets/wizard/jquery.easyWizard.js"></script>
+      <script src="/assets/wizard/scripts.js"></script>
+      <script src="/assets/lanceng.js"></script>
+   </body>
+</html>

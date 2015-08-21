@@ -1,0 +1,35 @@
+class Users::RegistrationsController < Devise::RegistrationsController
+
+  before_filter :set_vars
+
+  def edit
+    if params[:reset_password_token]
+      render :reset_password_token
+    else
+      super
+    end
+  end
+
+  protected
+  
+  # vaiáveis gerais
+  def set_vars
+    session[:page_title] = "Perfil"
+    session[:page_icon] = "fa-user"
+    session[:body_custom_cass] = "page-profile"
+    session[:tab] = params[:tab_name] if params[:tab_name]    
+  end
+
+  def after_update_path_for(resource)
+    edit_user_registration_path
+  end
+
+  def update_resource(resource, params)
+    if params[:password]
+      resource.update_with_password(params)
+    else
+      resource.update_without_password(params)
+    end
+  end
+
+end

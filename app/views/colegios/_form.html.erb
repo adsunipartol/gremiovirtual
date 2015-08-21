@@ -1,0 +1,59 @@
+<%= form_for(@colegio) do |f| %>
+	<% if @colegio.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@colegio.errors.count, "erro") %> </h2>
+		
+			<ul>
+				<% @colegio.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<div class="form-group">
+		<%= f.label :nome %>
+		<%= f.text_field :nome, :class => 'form-control', autofocus: true, required: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :nome_completo %>
+		<%= f.text_field :nome_completo, :class => 'form-control', required: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :email %>
+		<%= f.email_field :email , :class => 'form-control', autofocus: true, required: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :cidade %>
+		<%= f.select :cidade_id, Cidade.all.collect {|c| [c.nome_completo, c.id] }, {include_blank: 'Selecione uma cidade'}, :class => "form-control", :required => true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :endereco, 'Endereço' %>
+		<%= f.text_field :endereco, :class => 'form-control', required: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :bairro %>
+		<%= f.text_field :bairro, :class => 'form-control', required: true %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :telefone %>
+		<%= f.text_field :telefone, :class => 'form-control' %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :fax %>
+		<%= f.text_field :fax, :class => 'form-control' %>
+	</div>
+	
+	<div class="form-group actions">
+		<%= f.submit :class => 'btn btn-primary' %>
+	</div>
+<% end %>

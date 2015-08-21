@@ -1,0 +1,27 @@
+<h1>Listing conselho_representantes_de_turmas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gremio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conselho_representantes_de_turmas.each do |conselho_representantes_de_turma| %>
+      <tr>
+        <td><%= conselho_representantes_de_turma.gremio %></td>
+        <td><%= link_to 'Show', conselho_representantes_de_turma %></td>
+        <td><%= link_to 'Edit', edit_conselho_representantes_de_turma_path(conselho_representantes_de_turma) %></td>
+        <td><%= link_to 'Destroy', conselho_representantes_de_turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Conselho representantes de turma', new_conselho_representantes_de_turma_path %>

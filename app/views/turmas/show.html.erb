@@ -1,0 +1,68 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2 class="text-center">
+			<strong> <%= "#{@turma.serie} Série do Ensino #{@turma.ensino} - #{@turma.turno} ".camelize %> </strong>
+		</h2>
+		
+		<% if policy(@turma).edit? %>
+			<%= link_to icon('edit', 'Editar Turma'), edit_turma_path(@turma), :class => "btn btn-primary" %>
+		<% end %>
+		
+		<h2 style="margin-top: 60px">
+			Alunos
+			<% if policy(:aluno).new? %>
+				<%= link_to icon('plus', 'Novo aluno'), new_turma_aluno_path(@turma), :class => 'btn btn-info btn-xs pull-right' %>
+			<% end %>
+		</h2>
+		<% if @turma.alunos.exists? %>
+			<table class="table table-responsive table-condensed" data-sortable>
+				<thead class="my-table-header">
+					<tr>
+						<th style="width: 150px"> Matrícula </th>
+						<th> Nome </th>
+						<th> Email </th>
+						<th> Status </th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @turma.alunos.each do |aluno| %>
+						<tr>
+							<td><%= link_to aluno.matricula, aluno %></td>
+							<td><%= aluno.nome %></td>
+							<td><%= aluno.email %></td>
+							<td><%= aluno.status %> </td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h5> <i> Não há alunos cadastrados ou ativos! </i></h5>
+		<% end %>
+		
+		<h2 style="margin-top: 60px">
+			Representantes de Turma
+			<% if policy(@turma).adicionar_representante? %>
+				<%= link_to icon('plus', 'Novo Representante de Turma'), new_turma_representante_path(@turma), :class => 'btn btn-info btn-xs pull-right' %>
+			<% end %>
+		</h2>
+		<% if @turma.representantes.count > 0 %>
+			<table class="table table-condensed">
+				<thead>
+					<% @turma.representantes.each do |representante| %>
+						<tr>
+							<td>
+								<%= representante.cargo.descricao %><br>
+								<%= link_to representante.aluno.nome, representante.aluno %> 
+							</td>
+							<td>
+								<%= link_to 'Remover', representante, method: :delete, data: { confirm: 'Remover representante?' }, class: 'btn btn-xs btn-danger pull-right' if policy(representante).destroy? %>
+							</td>
+						</tr>
+					<% end %>
+				</thead>
+			</table>
+		<% else %>
+			<h5> <i> Não há representante(s)! </i></h5>
+		<% end %>
+	</div>
+</div>

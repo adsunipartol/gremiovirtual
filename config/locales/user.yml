@@ -1,0 +1,21 @@
+pt_br:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+
+    attributes:
+      user:
+        cpf: "CPF"
+        email: "E-mail"
+        password: "Senha"
+        current_password: "Senha atual"
+        password_confirmation: "Confirmação de Senha"
+        name: "Nome"
+        accept_terms: "Aceito os termos de uso"        
+        company: "Empresa"
+        affiliate: "Filial"
+        registry: "Matrícula"
+        photo: "Foto"
+        ramal: "Ramal"

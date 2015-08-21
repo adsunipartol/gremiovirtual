@@ -1,0 +1,38 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Turmas </h2>
+	
+		<% if @turmas %>
+			<table data-sortable class="table table-responsive table-condensed">
+				<thead class="my-table-header">
+					<tr>
+						<th style="min-width: 2cm;"> Série </th>
+						<th style="min-width: 4cm"> Ensino </th>
+						<th style="min-width: 3cm"> Turno </th>
+						<th style="min-width: 2.5cm"> Alunos </th>
+						<th style="min-width: 5cm"></th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<% @turmas.each do |turma| %>
+						<tr>
+							<td><%= turma.serie %></td>
+							<td><%= turma.ensino %></td>
+							<td><%= turma.turno %></td>
+							<td><%= turma.alunos.count %></td>
+							<td>
+								<div class="pull-right">
+									<%= link_to 'Exibir', turma, class: 'btn btn-xs btn-default' if policy(turma).show? %>
+									<%= link_to 'Excluir', turma, :method => :delete, :data => {confirm: 'Excluir turma?'}, class: 'btn btn-xs btn-danger' if policy(turma).destroy? %>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h5> Nenhuma turma cadastrada </h5>
+		<% end %>
+	</div>
+</div>

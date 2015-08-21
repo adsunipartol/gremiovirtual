@@ -1,0 +1,25 @@
+<%= form_for(@membro_conselho_fiscal) do |f| %>
+  <% if @membro_conselho_fiscal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membro_conselho_fiscal.errors.count, "error") %> prohibited this membro_conselho_fiscal from being saved:</h2>
+
+      <ul>
+      <% @membro_conselho_fiscal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cargo_membro_conselho_fiscal_id %><br>
+    <%= f.text_field :cargo_membro_conselho_fiscal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :aluno_id %><br>
+    <%= f.text_field :aluno_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

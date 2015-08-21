@@ -1,0 +1,27 @@
+<h1>Listing cargo_membro_comissao_eleitorais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cargo_membro_comissao_eleitorais.each do |cargo_membro_comissao_eleitoral| %>
+      <tr>
+        <td><%= cargo_membro_comissao_eleitoral.descricao %></td>
+        <td><%= link_to 'Show', cargo_membro_comissao_eleitoral %></td>
+        <td><%= link_to 'Edit', edit_cargo_membro_comissao_eleitoral_path(cargo_membro_comissao_eleitoral) %></td>
+        <td><%= link_to 'Destroy', cargo_membro_comissao_eleitoral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cargo membro comissao eleitoral', new_cargo_membro_comissao_eleitoral_path %>

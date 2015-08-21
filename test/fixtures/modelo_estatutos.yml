@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comissao_pro_gremio_id: 
+  aprovado: false
+  estatuto: MyText
+
+two:
+  comissao_pro_gremio_id: 
+  aprovado: false
+  estatuto: MyText

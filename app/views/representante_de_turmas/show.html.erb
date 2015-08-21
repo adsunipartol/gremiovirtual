@@ -1,0 +1,42 @@
+<div class="box-info full" >
+	<div class="panel">
+		<div class="panel-heading">
+			<h2> Representante de Turma </h2>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<td style="width: 15px">
+							<label class="label label-info"> Turma </label>
+						</td>
+						<td>
+							<a href="<%= url_for(@representante_de_turma.turma) %>"> <%= @representante_de_turma.turma.nome %> </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="label label-info"> Aluno </label>
+						</td>
+						<td>
+							<a href="<%= url_for(@representante_de_turma.aluno) %>"> <%= @representante_de_turma.aluno.nome.titleize %> </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="label label-info"> Cargo </label>
+						</td>
+						<td>
+							<%= @representante_de_turma.cargo.descricao %>
+						</td>
+					</tr>
+				</thead>
+			</table>
+			
+			<div class="col-xs-12">
+				<% if policy(:representante_de_turma).edit? %>
+					<%= link_to icon('edit', 'Editar Representante'), edit_representante_de_turma_path(@representante_de_turma), :class => 'btn btn-default', :style => 'margin-top: 15px' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

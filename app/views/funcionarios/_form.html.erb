@@ -1,0 +1,55 @@
+<%= form_for(@funcionario) do |f| %>
+	<% if @funcionario.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@funcionario.errors.count, "erro") %> </h2>
+		
+			<ul>
+				<% @funcionario.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th> 
+						<%= f.label :cargo_funcionario_id, 'Cargo' %> <br/>
+						<%= f.select :cargo_funcionario_id, @cargos.collect {|c| [c.descricao, c.id]}, {include_blank: 'Selecione o cargo'}, :class => 'form-control', :required => true %> 
+					</th>
+				</tr>
+				<tr>
+					<th> 
+						<%= f.label :nome %> <br/>
+						<%= f.text_field :nome, :class => 'form-control', :autofocus => true, :required => true %> 
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<%= f.label :cpf %> <br/>
+						<%= f.text_field :cpf, :class => 'form-control', :required => true, :id => 'cpf' %> 
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<%= f.label :email, 'E-mail' %> <br/>
+						<%= f.email_field :email, :class => 'form-control', :required => true %> 
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2"> <%= f.submit :class => 'btn btn-primary' %> </th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+<% end %>
+
+<script type="text/javascript">
+	$(function() {
+		$('#cpf').mask('999.999.999-99');
+	}); 
+</script>

@@ -1,0 +1,87 @@
+<%= form_for(@eleicao_gremio) do |f| %>
+	<% if @eleicao_gremio.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@eleicao_gremio.errors.count, "erro") %> </h2>
+			<ul>
+				<% @eleicao_gremio.errors.full_messages.each do |msg| %>
+					<li> <%= msg %> </li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="2"> 
+						<label> Grêmio </label> <br/>
+						<%= f.select :gremio_id, Gremio.all.collect {|g| [g.nome.titleize, g.id]}, {include_blank: 'Selecione o Grêmio'}, :class => 'form-control', :required => true %>
+					</th>
+				</tr>
+				<tr>
+					<th style="width: 300px">
+						<label> Data inicial das inscrições </label> <br/>
+						<%= f.date_select :data_inicio_inscricoes, :class => 'form-control', :required => true, :id => 'dt_inicio_inscricoes', :style => 'width: 3.5cm' %>
+					</th>
+					<th>
+						<label> Data final das inscrições </label> <br/>
+						<%= f.date_select :data_termino_inscricoes, :class => 'form-control', :required => true, :id => 'dt_termino_inscricoes', :style => 'width: 3.5cm' %>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<label> Data da votação </label> <br/>
+						<%= f.date_select :data_votacao, :class => 'form-control', :required => true, :id => 'dt_votacao', :style => 'width: 3.5cm' %>
+					</th>
+				</tr>
+				<tr colspan="2">
+					<th>
+						<%= f.submit 'Criar Eleição', :class => 'btn btn-primary'%>
+					</th>
+				</tr>
+			</thead>
+		</table>
+		
+		<% if @eleicao_gremio.chapas.count > 0 %>
+			<table class="table">
+				<thead>
+					<% @eleicao_gremio.chapas.each do |c| %>
+						<tr>
+							<th colspan="2"> <strong> Chapa: </strong> &nbsp; <%= c.nome %> </th>
+						</tr>
+						<% c.membros.each do |m| %>
+						<tr>
+							<td> <%= m.aluno.nome %> </td>
+							<td> <%= m.cargo.descricao %> </td>
+						</tr>
+						<% end %>	
+					<% end %>
+				</thead>
+			</table>
+		<% end %>
+	</div>
+<% end %>
+
+<script type="text/javascript">
+	$(function() {
+		$('#dt_votacao').mask('99/99/9999');
+		$('#dt_inicio_inscricoes').mask('99/99/9999');
+		$('#dt_termino_inscricoes').mask('99/99/9999');
+		
+		$('#dt_votacao').datepicker({format: 'dd/mm/yyyy'});
+		$('#dt_inicio_inscricoes').datepicker({
+			format: 'dd/mm/yyyy',
+		 	onClose: function(selectedDate) {
+            	$('#dt_termino_inscricoes').datepicker('option', 'mminDate', selectedDate);
+            }
+        });
+        
+		$('#dt_termino_inscricoes').datepicker({
+			format: 'dd/mm/yyyy',
+		 	onClose: function(selectedDate) {
+            	$('#dt_inicio_inscricoes').datepicker('option', 'maxDate', selectedDate);
+            }
+		});
+	});
+</script>

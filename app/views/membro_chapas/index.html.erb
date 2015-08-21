@@ -1,0 +1,29 @@
+<h1>Listing membro_chapas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Chapa</th>
+      <th>Aluno</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @membro_chapas.each do |membro_chapa| %>
+      <tr>
+        <td><%= membro_chapa.chapa %></td>
+        <td><%= membro_chapa.aluno %></td>
+        <td><%= link_to 'Show', membro_chapa %></td>
+        <td><%= link_to 'Edit', edit_membro_chapa_path(membro_chapa) %></td>
+        <td><%= link_to 'Destroy', membro_chapa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Membro chapa', new_membro_chapa_path %>

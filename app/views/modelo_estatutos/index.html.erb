@@ -1,0 +1,31 @@
+<h1>Listing modelo_estatutos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comissao pro gremio</th>
+      <th>Aprovado</th>
+      <th>Estatuto</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modelo_estatutos.each do |modelo_estatuto| %>
+      <tr>
+        <td><%= modelo_estatuto.comissao_pro_gremio %></td>
+        <td><%= modelo_estatuto.aprovado %></td>
+        <td><%= modelo_estatuto.estatuto %></td>
+        <td><%= link_to 'Show', modelo_estatuto %></td>
+        <td><%= link_to 'Edit', edit_modelo_estatuto_path(modelo_estatuto) %></td>
+        <td><%= link_to 'Destroy', modelo_estatuto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modelo estatuto', new_modelo_estatuto_path %>

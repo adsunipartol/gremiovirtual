@@ -1,0 +1,45 @@
+<%= form_for(@representante_de_turma) do |f| %>
+	<% if @representante_de_turma.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@representante_de_turma.errors.count, "erro") %> </h2>
+		
+			<ul>
+				<% @representante_de_turma.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<%= f.hidden_field :turma_id, :value => @representante_de_turma.turma.id %>
+	
+	<table class="table text-info">
+		<thead>
+			<tr>
+				<th>
+					<%= f.label :turma_id, "Turma" %> <br>
+					<%= f.text_field :turma_id, :value => @representante_de_turma.turma.nome, :class => "form-control", :disabled => true %>			
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<%= f.label :aluno_id, 'Aluno' %> <br>
+					<%= f.select :aluno_id, @alunos.collect {|a| [a.nome, a.id] }, {include_blank: 'Selecione um aluno'}, :class => "form-control", :required => true %>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<%= f.label :cargo_representante_de_turma_id, 'Cargo' %>
+					<br>
+					<%= f.select :cargo_representante_de_turma_id, @cargos.all.collect {|c| [c.descricao, c.id]}, {}, :class => 'form-control' %>
+				</th>
+			</tr>
+		</thead>
+	</table>
+	
+	<div class="actions" style="padding: 15px">
+		<%= f.submit :class => 'btn btn-primary' %>
+	</div>
+<% end %>

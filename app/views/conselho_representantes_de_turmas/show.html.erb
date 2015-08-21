@@ -1,0 +1,58 @@
+<div class="box-info full" >
+	<div class="panel">
+		<div class="panel-heading">
+			<h2 class="text-center"> <strong> Conselho de Representantes de Turmas </strong></h2>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							<label> Colégio: </label>
+							<%= link_to @conselho_representantes_de_turma.colegio.nome.titleize, @conselho_representantes_de_turma.colegio %> 
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<label> Grêmio: </label>
+							<%= link_to @conselho_representantes_de_turma.colegio.gremio.nome.titleize, @conselho_representantes_de_turma.colegio.gremio %>
+						</th>
+					</tr>
+				</thead>
+			</table>
+			
+			<h2 style="margin-top: 60px">
+				Representantes
+			</h2>
+			<% if @conselho_representantes_de_turma.representantes.exists? %>
+				<table class="table table-responsive table-condensed" data-sortable>
+					<thead class="my-table-header">
+						<tr>
+							<th> Turma </th>
+							<th> Cargo </th>
+							<th> Aluno </th>
+							
+							<th> </th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @conselho_representantes_de_turma.representantes.order('turma_id').each do |representante| %>
+							<tr>
+								<td> <a href="<%= url_for(representante.turma)%>"> <%= representante.turma.nome %> </a> </td>
+								<td><%= representante.cargo.descricao %></td>
+								<td> <a href="<%= url_for(representante.aluno) %>"> <%= representante.aluno.nome %> </a> </td>
+								
+								<td>
+									<% if policy(representante).destroy? %>
+										<%= link_to 'Excluir', representante, :method => :delete, :data => {confirm: 'Excluir representante de turma?'}, :class => 'btn btn-xs btn-danger pull-right' %>
+									<% end %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				<h5> Não há alunos cadastrados ou ativos! </h5>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="box-info full" >
+	<h2 class="text-center">
+		<strong>Grêmio</strong>
+	</h2>
+	
+	<div class="form-group">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						<label> Colégio: </label>
+						<%= link_to @gremio.colegio.nome, @gremio.colegio %>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<label> Nome: </label>
+						<%= link_to @gremio.nome.titleize, @gremio %> 
+					</th>
+				</tr>
+				<% if policy(:gremio).edit? %>
+					<tr>
+						<th colspan="2">
+				        	<%= link_to icon('edit', 'Editar'), edit_gremio_path(@gremio), :class => 'btn btn-primary' %>
+						</th>
+					</tr>
+				<% end %>
+				<tr>
+					<td colspan="2" class="text-right">
+						| <%= link_to icon('external-link', 'Comissão Eleitoral'), comissao_eleitorais_path %>
+						| <%= link_to icon('external-link', 'Conselho Fiscal'), conselho_fiscais_path %>
+						| <%= link_to icon('external-link', 'Conselho de Representantes De Turmas'), @gremio.colegio.conselho_representantes_de_turma %>
+						|
+					</td>
+				</tr>
+			</thead>
+		</table>
+		
+		<br>
+		
+		<% if @gremio.diretoria && @gremio.diretoria.membros.exists? %>
+			<table class="table table-striped table-condensed" data-sortable>
+				<thead>
+					<% @gremio.diretoria.membros.each do |membro| %>
+						<tr>
+							<td>
+								<label> <%= "#{membro.cargo.descricao}:" %> </label> <%= link_to membro.aluno.nome.titleize, membro.aluno %>
+							<br>
+								<label> Turma </label> <%= link_to membro.aluno.turma.nome, membro.aluno.turma %>
+	        				</td>
+						</tr>
+					<% end %>
+				</thead>
+			</table>
+		<% end %>
+	</div>
+</div>

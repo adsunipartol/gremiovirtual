@@ -1,0 +1,15 @@
+# encoding: UTF-8
+# pt-BR translations for Devise
+pt_br:
+  errors:
+    messages:
+      taken_in_past: "já usada anteriormente!"
+      equal_to_current_password: "deve ser diferente da senha atual!"
+  devise:
+    invalid_captcha: "A entrada captcha não é válido!"
+    password_expired:
+      updated: "Sua nova senha foi salva."
+      change_required: "Sua senha expirou. Por favor, refaça sua senha!"
+    failure:
+      session_limited: 'Suas credenciais de login foram usados ​​em outro navegador. Por favor efetue login novamente para continuar neste browser.'
+      expired: 'Sua conta expirou devido à inatividade. Por favor, contate o administrador do site.'

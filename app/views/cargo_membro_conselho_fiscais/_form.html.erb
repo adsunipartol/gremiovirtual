@@ -1,0 +1,21 @@
+<%= form_for(@cargo_membro_conselho_fiscal) do |f| %>
+  <% if @cargo_membro_conselho_fiscal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cargo_membro_conselho_fiscal.errors.count, "error") %> prohibited this cargo_membro_conselho_fiscal from being saved:</h2>
+
+      <ul>
+      <% @cargo_membro_conselho_fiscal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descricao, 'Descrição' %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for(@conselho_fiscal) do |f| %>
+	<% if @conselho_fiscal.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@conselho_fiscal.errors.count, "erro") %> </h2>
+		
+			<ul>
+				<% @conselho_fiscal.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<%= f.hidden_field :gremio_id, :value => current_colegio.gremio.id %>
+	
+	<% if policy(:conselho_fiscal).new? %>
+		<%= f.submit :class => 'btn btn-primary' %>
+	<% end %>
+<% end %>

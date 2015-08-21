@@ -1,0 +1,33 @@
+<div class="box-info">
+	<h2> Colégios </h2>
+
+	<table class="table table-responsive">
+	  <thead>
+	    <tr>
+	      <th>Nome</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	    <% @colegios.each do |colegio| %>
+	      <tr>
+	        <td><%= colegio.nome %></td>
+	        <td>
+				<div class="btn-group">
+					<% if policy(:colegio).show? %>
+						<%= link_to 'Exibir', colegio, :class => 'btn btn-info', :style => 'color: #fff' %>
+					<% end %>
+			  		<% if policy(:colegio).edit? %>
+			  			<%= link_to 'Editar', edit_colegio_path(colegio) %>
+		  			<% end %>
+			  		<% if policy(:colegio).destroy? %>
+						<%= link_to 'Remover', colegio, method: :delete, data: { confirm: 'Remover colégio?' } %>
+					<% end %> 
+				</div>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>

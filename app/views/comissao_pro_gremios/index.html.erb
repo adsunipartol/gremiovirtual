@@ -1,0 +1,52 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Comissões Pró-Grêmio </h2>
+		
+		<% if @comissao_pro_gremios.count > 0 %>
+			<table class="table table-responsive">
+			  <thead class="my-table-header">
+			    <tr>
+		    	  <th> Data da Votação </th>
+			      <th> Nome </th>
+			      <th> E-mail </th>
+			      <th></th>
+			      <th></th>
+			    </tr>
+			  </thead>
+			
+			  <tbody>
+			    <% @comissao_pro_gremios.each do |comissao| %>
+			      <tr>
+			       
+			        <td>
+			        	<div class="btn-group-sm pull-right">
+				        	<% if policy(:comissao_pro_gremio).show? %>
+				        		| <%= link_to 'Exibir', comissao %>
+				        	<% end %>
+				        
+					        <% if policy(:comissao_pro_gremio).destroy? %>
+					        	| <%= link_to 'Editar', edit_comissao_pro_gremio_path(comissao) %>
+					        <% end %>
+					        
+				            <% if policy(:comissao_pro_gremio).destroy? %>
+					        	| <%= link_to 'Remover', comissao, method: :delete, data: { confirm: 'Excluir Comissão Pró-Grêmio?' } %>
+				        	<% end %>
+			        	</div>
+		        	</td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		<% else %>
+			<h5> Nenhuma comissão cadastrada </h5>
+		<% end %>
+	</div>
+	
+	<div class="panel-body">
+		<% if policy(:comissao_pro_gremio).new? %>
+			<%= link_to 'Nova Comissão Pró-Grêmio', new_comissao_pro_gremio_path, :class => 'btn btn-primary', :style => 'color: white' %>
+		<% else %>
+			<h5> Se você é aluno, entre em contato com a direção da escola para que te ajude com a criação da Comissão Pró-Grêmio </h5>
+		<% end %>
+	</div>
+</div>

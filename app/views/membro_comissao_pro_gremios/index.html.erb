@@ -1,0 +1,29 @@
+<h1>Listing membro_comissao_pro_gremios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Comissao pro gremio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @membros_comissao_pro_gremio.each do |membro_comissao_pro_gremio| %>
+      <tr>
+        <td><%= membro_comissao_pro_gremio.aluno %></td>
+        <td><%= membro_comissao_pro_gremio.comissao_pro_gremio %></td>
+        <td><%= link_to 'Exibir', membro_comissao_pro_gremio %></td>
+        <td><%= link_to 'Editar', edit_membro_comissao_pro_gremio_path(membro_comissao_pro_gremio) %></td>
+        <td><%= link_to 'Remover', membro_comissao_pro_gremio, method: :delete, data: { confirm: 'Remover membro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Membro', new_membro_comissao_pro_gremio_path %>

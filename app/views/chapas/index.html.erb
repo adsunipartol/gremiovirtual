@@ -1,0 +1,23 @@
+<div class="box-info">
+	<h2 class="text-center"><strong> Chapas </strong></h2>
+
+	<table class="table table-condensed table-hover">
+		
+		<thead>
+			<% @chapas.each do |chapa| %>
+			<tr>
+				<td><%= link_to chapa.nome, chapa %></td>
+				<td>
+				<div class="pull-right">
+					<% if policy(chapa).edit? %>
+					| <%= link_to 'Editar', edit_chapa_path(chapa) %>
+					<% end %>
+					<% if policy(chapa).destroy? %>
+					| <%= link_to 'Remover', chapa, method: :delete, data: { confirm: 'Remover chapa?' } %>
+					<% end %>
+				</div></td>
+			</tr>
+			<% end %>
+		</thead>
+	</table>
+</div>

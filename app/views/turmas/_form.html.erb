@@ -1,0 +1,41 @@
+<div class="col-xs-12">
+	<%= form_for(@turma) do |f| %>
+		<% if @turma.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@turma.errors.count, "error") %> </h2>
+			
+				<ul>
+					<% @turma.errors.full_messages.each do |msg| %>
+					<li>
+						<%= msg %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		
+		<div class="form-group col-xs-12">
+			<%= f.label :colegio_id, 'Colégio' %>
+			<%= f.select :colegio_id, Colegio.all.collect { |c| [c.nome, c.id] }, {:include_blank => 'Selecione o colégio'}, :class => 'form-control', :required => true %>
+		</div>
+		
+		<div class="form-group col-xs-12 col-sm-4">
+			<%= f.label :serie, 'Série' %>
+			<%= f.select :serie, SERIES, {}, :class => 'form-control', :style => 'max-width: 4cm'%>
+		</div>
+		
+		<div class="form-group col-xs-12 col-sm-4">
+			<%= f.label :turno %>
+			<%= f.select :turno, TURNOS, {}, :class => 'form-control', :style => 'max-width: 4cm' %>
+		</div>
+		
+		<div class="form-group col-xs-12 col-sm-4">
+			<%= f.label :ensino %>
+			<%= f.select :ensino, NIVEIS_ENSINO, {}, :class => 'form-control', :style => 'max-width: 4cm' %>
+		</div>
+		
+		<div class="form-group col-xs-12">
+			<%= f.submit :class => "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

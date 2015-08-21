@@ -1,0 +1,141 @@
+<!-- Start sidebar menu -->
+<div class="left side-menu">
+	<div class="header sidebar rows">
+		<div class="logo animated bounceIn text-center">
+			<h1><a href="#"> Grêmio Virtual </a></h1>
+		</div>
+	</div>
+	<div class="body rows scroll-y animated fadeInLeftBig">
+		<div class="sidebar-inner slimscroller">
+			<div class="media">
+				<div class="media-body">
+					<p>
+						<% if current_usuario.admin? %>
+							<span class="label label-danger"> Admininstrador </span>
+						<% else %>
+							<% if current_usuario.aluno? %>
+								<span class="label label-success"> Aluno </span>
+							<% else %>
+								<% if current_usuario.funcionario? %>
+									<span class="label label-success"> Funcionário </span>
+								<% end %>
+							<% end %>
+						<% end %>
+					</p>
+					<p>
+						Olá<%= ", #{current_usuario.primeiro_nome.titleize}!" if current_usuario %>
+						<a class="md-trigger pull-right" data-modal="logout-modal" > <i class="fa fa-power-off"></i> Sair </a>
+					</p>
+				</div>
+			</div>
+			
+			<div id="sidebar-menu">
+				<ul style="padding-top: 50px">
+					<% if current_usuario.admin_or_funcionario? %>
+						<!-- CADASTROS -->
+						<li>
+							<a href="#"><i class="fa fa-list-alt"></i><i class="fa fa-angle-double-down i-right"></i> 
+								Cadastros
+							</a>
+							<ul>
+								<li> <a href="<%= new_colegio_path %>"><i class="fa fa-angle-right"></i> Colégio </a> </li>
+								<li> <a href="<%= new_funcionario_path %>"><i class="fa fa-angle-right"></i> Funcionário </a> </li>
+								<li> <a href="<%= new_turma_path %>"><i class="fa fa-angle-right"></i> Turma </a> </li>
+								<li> <a href="<%= new_aluno_path %>"><i class="fa fa-angle-right"></i> Aluno </a> </li>
+							</ul>
+						</li>
+					<% end %>
+					<li>
+						<a href="#"> <i class="fa fa-search"></i> <i class="fa fa-angle-double-down i-right"></i> 
+							Consultas
+						</a>
+						<ul>
+							<li> <a href="<%= alunos_path %>"> <i class="fa fa-angle-right"></i> Alunos </a> </li>
+							<li> <a href="<%= turmas_path %>"><i class="fa fa-angle-right"></i> Turmas </a> </li>
+							<li> <a href="<%= funcionarios_path %>"><i class="fa fa-angle-right"></i> Funcionários </a> </li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="#"> <i class="fa fa-users"></i> <i class="fa fa-angle-double-down i-right"></i> 
+							Grêmio
+						</a>
+						<ul>
+							<li>
+								<a href="<%= gremios_path %>"><i class="fa fa-angle-right"></i> Grêmio </a>
+							</li>
+							<li>
+								<a href="<%= comissao_pro_gremios_path %>"><i class="fa fa-angle-right"></i> Comissão Pró-Grêmio </a>
+							</li>
+							<li>
+								<a href="<%= conselho_representantes_de_turma_path(current_colegio.conselho_representantes_de_turma) %>"><i class="fa fa-angle-right"></i> Representantes de Turmas </a>
+							</li>
+							<li> 
+								<%= link_to comissao_eleitorais_path do %>
+									<i class="fa fa-angle-right"></i> Comissão Eleitoral
+								<% end %>
+							</li>
+							<li>
+								<a href="<%= conselho_fiscais_path %>"><i class="fa fa-angle-right"></i> Conselho Fiscal </a>
+							</li>
+						</ul>
+					</li>
+					
+					<% if current_colegio.gremio %>
+					<li>
+						<a href="#"> <i class="fa fa-users"></i> <i class="fa fa-angle-double-down i-right"></i> 
+							Eleição (Grêmio)
+						</a>
+						<ul>
+							<% if current_colegio.gremio.eleicao_gremio && policy(:chapa).create? %>
+								<li>
+									<%= link_to new_chapa_path do %>
+										<i class=" fa fa-angle-right"></i> Nova Chapa
+									<% end %>
+								</li>
+							<% end %>
+							<% if  policy(:eleicao_gremio).create? %>
+								<li>
+									<%= link_to eleicao_gremios_path(current_colegio.gremio) do %>
+										<i class="fa fa-angle-right"></i> Nova Eleição
+									<% end %>
+								</li>
+							<% end %>
+							<% if current_colegio.gremio.eleicao_gremio %>
+								<li>
+									<%= link_to votacao_eleicao_gremios_path(current_colegio.gremio.eleicao_gremio) do %>
+										<i class="fa fa-angle-right"></i> Votação
+									<% end %>
+								</li>
+							<% end %>
+						</ul>
+					</li>
+					<% end %>
+					<!--
+					<li>
+						<a href="#"> <i class="fa fa-users"></i> <i class="fa fa-angle-double-down i-right"></i> 
+							Assembléia Geral
+						</a>
+						<ul>
+							<li> <i class="fa fa-angle-right"></i> Organizar Assembléia </li>
+						</ul>
+					</li>
+					-->
+				</ul>
+			
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!--
+	<div class="footer rows animated fadeInUpBig">
+	<div class="progress progress-xs progress-striped active">
+	<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+	<span class="progress-precentage">80&#37;</span>
+	</div>
+	<a data-toggle="tooltip" title="See task progress" class="btn btn-default md-trigger" data-modal="task-progress"><i class="fa fa-inbox"></i></a>
+	</div>
+	</div>
+	-->
+</div>
+<!-- End sidebar menu -->

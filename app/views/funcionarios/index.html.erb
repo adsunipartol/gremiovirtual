@@ -1,0 +1,35 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Funcionários </h2>
+
+		<% if @funcionarios.exists? %>
+		<table class="table table-responsive table-condensed" role="table" data-sortable="true">
+			<thead class="my-table-header">
+				<tr>
+					<th style="min-width: 200px"> Nome </th>
+					<th style="min-width: 120px"> Cargo </th>
+					<th style="min-width: 200px"> E-mail </th>
+					<th style="min-width: 200px" data-sortable="false"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @funcionarios.each do |funcionario| %>
+				<tr>
+					<td><%= link_to funcionario.nome, funcionario %></td>
+					<td><%= funcionario.cargo_funcionario.descricao %></td>
+					<td><%= funcionario.email %></td>
+					<td>
+						<% if policy(:funcionario).destroy? %>
+							<%= link_to 'Remover', funcionario, method: :delete, data: { confirm: 'Excluir funcionário?' }, class: 'btn btn-xs btn-danger pull-right' %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% else %>
+		<h5> Nenhum funcionário cadastrado </h5>
+		<% end %>
+	</div>
+</div>

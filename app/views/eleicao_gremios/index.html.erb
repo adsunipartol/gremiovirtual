@@ -1,0 +1,46 @@
+
+<div class="panel box-info">
+	<div class="panel-heading">
+		<h2> Eleições (Grêmio) </h2>
+		
+		<% if @eleicoes_gremios.exists? %>
+			<table class="table table-responsive">
+			  <thead class="my-table-header">
+			    <tr>
+		    	  <th> Data da Votação </th>
+			      <th>Nome</th>
+			      <th>E-mail</th>
+			      <th></th>
+			      <th></th>
+			    </tr>
+			  </thead>
+			
+			  <tbody>
+			    <% @eleicoes_gremios.each do |eleicao_gremio| %>
+			      <tr>
+			        <td><%= eleicao_gremio.data_votacao %></td>
+			        
+			        <td>
+			        	<div class="btn-group-sm pull-right">
+				        	<% if policy(:eleicao_gremio).show? %>
+				        		| <%= link_to 'Exibir', eleicao_gremio %>
+				        	<% end %>
+				        
+					        <% if policy(:eleicao_gremio).destroy? %>
+					        	| <%= link_to 'Editar', edit_eleicao_gremio_path(eleicao_gremio) %>
+					        <% end %>
+					        
+				            <% if policy(:eleicao_gremio).destroy? %>
+					        	| <%= link_to 'Remover', eleicao_gremio, method: :delete, data: { confirm: 'Excluir eleição?' } %>
+				        	<% end %>
+			        	</div>
+		        	</td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		<% else %>
+			<h5> Nenhuma eleição cadastrada </h5>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="box-info full" >
+	<div class="panel">
+		<div class="panel-heading">
+			<h2 class="text-center">
+				<strong>Funcionário</strong>
+			</h2>
+			
+			<table class="table text-info">
+				<thead>
+					<tr>
+						<td>
+							<label> Colégio </label> <br>
+							<%= @funcionario.colegio.nome %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> Nome </label> <br>
+							<%= @funcionario.nome %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> E-mail </label> <br>
+							<%= @funcionario.email %> 
+						</td>
+					</tr>
+					<tr>
+						<td> 
+							<label> Cpf </label> <br>
+							<%= @funcionario.cpf %> 
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label> Cargo </label> <br>
+							<%= @funcionario.cargo_funcionario.descricao %>
+						</td>
+					</tr>
+					<% if policy(:funcionario).destroy? %>
+						<tr>
+							<td>
+					        	<%= link_to icon('edit', 'Editar'), edit_funcionario_path(@funcionario), :class => 'btn btn-primary' %>
+							</td>
+						</tr>
+					<% end %>
+				</thead>
+			</table>
+		</div>
+	</div>
+</div>

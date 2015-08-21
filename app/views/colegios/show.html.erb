@@ -1,0 +1,69 @@
+<div class="panel box-info">
+	<div class="panel-heading">
+		
+		<h2 class="text-center">
+			<strong>Colégio</strong>
+		</h2>
+			
+		<table class="table table-striped text-info">
+			<thead>
+				<tr>
+					<td style="width: 100px">
+						<label> Nome </label> <br>
+						<%= @colegio.nome_completo.titleize %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label> Cidade </label> <br>
+						<%= @colegio.cidade.nome %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label> E-mail </label> <br>
+						<%= @colegio.email %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label> Cnpj </label> <br>
+						<%= @colegio.cnpj %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label> Telefone Principal </label> <br>
+						<%= @colegio.telefone %>
+					</td>
+				</tr>
+				<% if @colegio.fax? %>
+					<tr>
+						<td>
+							<label> Telefone Secundário </label> <br>
+							<%= @colegio.fax %>
+						</td>
+					</tr>
+				<% end %>
+				<tr>
+					<td>
+						<label> Endereço </label> <br>
+						<%= @colegio.endereco %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label> Bairro </label> <br>
+						<%= @colegio.bairro %>
+					</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	
+	<div class="form-group">
+		<% if policy(:colegio).update? %>
+			<%= link_to icon('edit', 'Editar Colégio'), edit_colegio_path(@colegio), :class => 'btn btn-primary', :style => 'margin: 15px 15px;' %>
+		<% end %>
+	</div>
+</div>

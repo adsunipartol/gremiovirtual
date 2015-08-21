@@ -1,0 +1,31 @@
+<%= form_for(@membro_comissao_pro_gremio) do |f| %>
+  <% if @membro_comissao_pro_gremio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membro_comissao_pro_gremio.errors.count, "erro") %> </h2>
+
+      <ul>
+      <% @membro_comissao_pro_gremio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th> <label class="label label-info"> Colégio </label> </th>
+				<td colspan="2"> <%= Colegio.instancia.nome_completo %> </td>
+			</tr>
+			<tr>
+				<th style="width: 3cm"> <label class="label label-info"> Aluno </label> </th>
+				<th> <%= f.select :aluno_id, @alunos.collect { |a| [a.nome, a.id] }, {include_blank: 'Selecione um Aluno'}, :class => 'form-control' %> </th>
+				<th> <%= f.submit 'Salvar como Membro da Comissão Pró-Grêmio', :class => 'btn btn-primary pull-right' %> </th>
+			</tr>
+		</thead>
+	</table>
+	
+	<div class="actions">
+		
+  	</div>
+<% end %>

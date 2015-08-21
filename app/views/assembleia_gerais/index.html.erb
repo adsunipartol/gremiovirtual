@@ -1,0 +1,27 @@
+<h1>Listing assembleia_gerais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Colegio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assembleia_gerais.each do |assembleia_geral| %>
+      <tr>
+        <td><%= assembleia_geral.colegio %></td>
+        <td><%= link_to 'Show', assembleia_geral %></td>
+        <td><%= link_to 'Edit', edit_assembleia_geral_path(assembleia_geral) %></td>
+        <td><%= link_to 'Destroy', assembleia_geral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assembleia geral', new_assembleia_geral_path %>
