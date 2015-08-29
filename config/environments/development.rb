@@ -39,7 +39,7 @@ GremioVirtual::Application.configure do
     :domain => 'gmail.com',
     :user_name => 'gremio.virtual@gmail.com',
     :password => 'unipar-2014-gremio',
-    :authentication => 'plain'
+    :authentication => 'plain',
     :enabled_starttls_auto => true
   }
   ActionMailer::Base.default :from => '"Grêmio Virtual" <gremio.virtual@gmail.com>'
