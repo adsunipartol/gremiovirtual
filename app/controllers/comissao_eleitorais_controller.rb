@@ -5,11 +5,10 @@ class ComissaoEleitoraisController < ApplicationController
   respond_to :html, :xml, :json
   
   def index
-    if current_colegio.gremio && current_colegio.gremio.comissao_eleitoral
-      @comissao_eleitoral = current_colegio.gremio.comissao_eleitoral
-      redirect_to @comissao_eleitoral
+    if current_colegio.gremio
+      redirect_to current_colegio.gremio.comissao_eleitoral || new_comissao_eleitoral_path
     else
-      redirect_to new_comissao_eleitoral_path
+      redirect_to new_gremio_path
     end
   end
 
