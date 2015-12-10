@@ -1,5 +1,9 @@
 <div class="box-info">
-	<h2> Colégios </h2>
+	<h2> Colégios 
+		<% if policy(:colegio).new? %>
+			<%= link_to icon('plus', 'Novo colégio'), new_colegio_path, class: 'btn btn-info btn-xs pull-right' %>
+		<% end %>
+	</h2>
 
 	<table class="table table-responsive">
 	  <thead>

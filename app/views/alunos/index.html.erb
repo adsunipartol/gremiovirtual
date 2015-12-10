@@ -1,6 +1,10 @@
 <div class="panel box-info">
 	<div class="panel-heading">
-		<h2> Alunos </h2>
+		<h2> Alunos 
+			<% if policy(:aluno).new? %>
+				<%= link_to icon('plus', 'Novo aluno'), new_aluno_path, class: 'btn btn-info btn-xs pull-right' %>
+			<% end %>
+		</h2>
 	
 		<% if @alunos.exists? %>
 			<table class="table table-responsive table-condensed" data-sortable>

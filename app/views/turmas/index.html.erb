@@ -1,6 +1,10 @@
 <div class="panel box-info">
 	<div class="panel-heading">
-		<h2> Turmas </h2>
+		<h2> Turmas
+			<% if policy(:turma).new? %>
+				<%= link_to icon('plus', 'Nova turma'), new_turma_path, class: 'btn btn-info btn-xs pull-right' %>
+			<% end %>
+		</h2>
 	
 		<% if @turmas %>
 			<table data-sortable class="table table-responsive table-condensed">
