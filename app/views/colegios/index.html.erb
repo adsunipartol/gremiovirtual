@@ -14,15 +14,15 @@
 	      <tr>
 	        <td><%= colegio.nome %></td>
 	        <td>
-				<div class="btn-group">
+				<div class="pull-right">
 					<% if policy(:colegio).show? %>
-						<%= link_to 'Exibir', colegio, :class => 'btn btn-info', :style => 'color: #fff' %>
+						<%= link_to 'Exibir', colegio, :class => 'btn btn-xs btn-info', :style => 'color: #fff' %>
 					<% end %>
 			  		<% if policy(:colegio).edit? %>
-			  			<%= link_to 'Editar', edit_colegio_path(colegio) %>
+			  			<%= link_to 'Editar', edit_colegio_path(colegio), class: 'btn btn-xs btn-default'  %>
 		  			<% end %>
 			  		<% if policy(:colegio).destroy? %>
-						<%= link_to 'Remover', colegio, method: :delete, data: { confirm: 'Remover colégio?' } %>
+						<%= link_to 'Remover', colegio, method: :delete, data: { confirm: 'Remover colégio?' }, class: 'btn btn-xs btn-danger' %>
 					<% end %> 
 				</div>
 	        </td>
