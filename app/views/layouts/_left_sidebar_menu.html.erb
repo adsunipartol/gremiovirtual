@@ -53,6 +53,9 @@
 							<li> <a href="<%= alunos_path %>"> <i class="fa fa-angle-right"></i> Alunos </a> </li>
 							<li> <a href="<%= turmas_path %>"><i class="fa fa-angle-right"></i> Turmas </a> </li>
 							<li> <a href="<%= funcionarios_path %>"><i class="fa fa-angle-right"></i> Funcionários </a> </li>
+							<% if current_usuario.admin? %>
+							<li> <a href="<%= colegios_path %>"><i class="fa fa-angle-right"></i> Colégios </a> </li>
+							<% end %>
 						</ul>
 					</li>
 					
