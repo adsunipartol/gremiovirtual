@@ -28,7 +28,11 @@ class AlunosController < ApplicationController
       @turmas = current_colegio.turmas
     end
     
-    respond_with @aluno
+    if @aluno.turma
+      respond_with @aluno
+    else 
+      redirect_to new_turma_path
+    end
   end
 
   # GET /alunos/1/edit
